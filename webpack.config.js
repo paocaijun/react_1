@@ -9,6 +9,12 @@ module.exports = {
         path: path.join(__dirname, 'bundle'), //指明编译好的文件所在目录
         filename: 'bundle.js'
     },
+    resolve: {
+        alias: {
+            "@": path.join(__dirname, 'src')
+        },
+        extensions: ['.js', '.jsx', '.css', '.scss', '.json'] // 没带文件后缀时的匹配
+    },
     plugins: [
         new HtmlWebpackPlugin({
             inject: false,
@@ -31,7 +37,14 @@ module.exports = {
             exclude: /node_modules/,
             loader: 'style-loader!css-loader'
 
-        }]
+        }, {
+            test: /\.scss$/,
+            use: [
+                'style-loader',
+                'css-loader',
+                'sass-loader?sourceMap'
+            ]
+        }],
 
     }
 }

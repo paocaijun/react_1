@@ -7,7 +7,7 @@ class App extends React.Component {
     // 组件必须要有返回值
     // render是渲染组件的函数 渲染的时候必须有返回值
     render() {
-        return <div>hello world!</div>
+        return <div className='hello'>hello world22!</div>
     }
 }
 
