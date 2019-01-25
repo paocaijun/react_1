@@ -3,6 +3,8 @@ import ReactDOM from "react-dom"
 import App from "./App.js"
 import "@/layouts/css/index.scss"
 import { createStore } from "redux"
+import CRouter from "./router.js"
+console.log("React", React)
 const rootReducer = function(state, action) {
 	if (typeof state === "undefined") {
 		return 0
@@ -20,13 +22,17 @@ const rootReducer = function(state, action) {
 // import {rootReducer} from './reducers'
 import { Provider } from "react-redux"
 const store = createStore(rootReducer)
-console.log("store", store)
-ReactDOM.render(
-	<div>
-		<Provider store={store}>
-			<App />
-		</Provider>
-	</div>,
-	document.getElementById("app")
-)
+// 定义render函数,Component为CRouter
+const render = Component => {
+	ReactDOM.render(
+		<div className="main-index">
+			<Provider store={store}>
+				<Component />
+			</Provider>
+		</div>,
+		document.getElementById("app")
+	)
+}
+render(CRouter)
+
 // ReactDOM.render(<div>Hello World1111</div>, document.getElementById("app"));

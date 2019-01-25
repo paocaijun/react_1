@@ -1,5 +1,5 @@
-import React, { component } from "react"
-class App extends React.Component {
+import React, { Component } from "react"
+class App extends Component {
 	constructor(props, context) {
 		super(props)
 		this.state = {
@@ -10,18 +10,15 @@ class App extends React.Component {
 		this.toCount = this.toCount.bind(this)
 	}
 	toCount() {
-		console.log("this", this)
 		this.setState(preState => ({
 			countNum: preState.countNum + 5
 		}))
 	}
-	componentWillMount() {
-		console.log("mount", this)
-	}
+	componentWillMount() {}
 	render() {
 		return (
 			<div className="hello" onClick={this.toCount}>
-				hello world{this.state.countNum}
+				hello world eeee{this.state.countNum}
 			</div>
 		)
 	}
