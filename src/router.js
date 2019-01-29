@@ -11,6 +11,8 @@ import App from "./App"
 import MainPage from "@/pages/mainPage"
 
 import Home from "@/pages/home"
+import Buttons from "@/pages/ui/buttons"
+
 import HeadeNav from "@/pages/header/nav"
 class CRouter extends Component {
 	render() {
@@ -25,6 +27,7 @@ class CRouter extends Component {
 				<Route path={"/"} component={MainPage}>
 					<IndexRedirect to="/index" />
 					<Route path={"index"} component={Home} />
+					<Route path={"ui/buttons"} component={Buttons} />
 				</Route>
 			</Router>
 		)

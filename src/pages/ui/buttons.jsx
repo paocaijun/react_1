@@ -1,4 +1,4 @@
-import { Component } from "react"
+import React, { Component } from "react"
 class ButtonCom extends Component {
 	render() {
 		return <div>button</div>

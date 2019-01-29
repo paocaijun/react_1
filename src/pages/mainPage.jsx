@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import { Layout, Menu, Icon, Button } from "antd"
+import { Link } from "react-router"
 const { Header, Sider, Content, Footer } = Layout
 const SubMenu = Menu.SubMenu
 class MainPage extends Component {
@@ -7,12 +8,26 @@ class MainPage extends Component {
 		menuList: [
 			{
 				title: "首页",
-				iconType: "scan"
+				iconType: "scan",
+				url: "/index"
 			},
 			{
 				title: "UI",
 				iconType: "rocket",
-				childrens: ["按钮", "图标", "加载中"]
+				childrens: [
+					{
+						label: "按钮",
+						url: "/ui/buttons"
+					},
+					{
+						label: "图标",
+						url: "/ui/icons"
+					},
+					{
+						label: "加载中",
+						url: "/ui/buttons"
+					}
+				]
 			},
 			{
 				title: "动画",
@@ -31,7 +46,11 @@ class MainPage extends Component {
 			let subItems = []
 			item.childrens &&
 				item.childrens.forEach((j, k) => {
-					subItems.push(<Menu.Item key={`${i}-${k}`}>{j}</Menu.Item>)
+					subItems.push(
+						<Menu.Item key={`${i}-${k}`}>
+							<Link to={j.url}>{j.label}</Link>
+						</Menu.Item>
+					)
 				})
 			if (subItems.length) {
 				return (
@@ -49,8 +68,10 @@ class MainPage extends Component {
 			} else {
 				return (
 					<Menu.Item title={item.title} key={i}>
-						<Icon type={item.iconType} />
-						<span>{item.title}</span>
+						<Link to={item.url}>
+							<Icon type={item.iconType} />
+							<span>{item.title}</span>
+						</Link>
 					</Menu.Item>
 				)
 			}
