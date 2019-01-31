@@ -3,6 +3,7 @@ import { Layout, Menu, Icon, Button } from "antd"
 import { Link } from "react-router"
 const { Header, Sider, Content, Footer } = Layout
 const SubMenu = Menu.SubMenu
+import "@/layouts/css/pages/main"
 class MainPage extends Component {
 	state = {
 		menuList: [
@@ -88,16 +89,22 @@ class MainPage extends Component {
 						</Menu>
 					</Sider>
 					<Content>
-						<span onClick={this.toogleCol} className="p10 fs16">
-							<Icon
-								type={
-									this.state.collapsed
-										? "menu-unfold"
-										: "menu-fold"
-								}
-							/>
-						</span>
-						{this.props.children}
+						<div className="nav">
+							<span
+								onClick={this.toogleCol}
+								className=" toggle-icon">
+								<Icon
+									type={
+										this.state.collapsed
+											? "menu-unfold"
+											: "menu-fold"
+									}
+								/>
+							</span>
+						</div>
+						<div className="main-content">
+							{this.props.children}
+						</div>
 					</Content>
 				</Layout>
 			</div>

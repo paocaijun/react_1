@@ -1,15 +1,20 @@
-import React, { Component } from 'react';
-import img1 from '@/layouts/2.jpg';
+import React, { Component } from "react"
+import { Row, Col } from "antd"
+// import img1 from '@/layouts/2.jpg';
 class Home extends Component {
-    render() {
-        return (
-            <div>
-                home页面
-                <img src="../layouts/2.jpg" />
-                <img src={img1} />
-                <audio controls="controls">您的浏览器不支持 audio 标签。</audio>
-            </div>
-        );
-    }
+	render() {
+		return (
+			<div className="home-page common-page">
+				<div className="bread">首页</div>
+				<Row gutter={16}>
+					<Col span={8}>
+						<div className="general-desc">左上</div>
+					</Col>
+					<Col span={16}>right</Col>
+				</Row>
+				{/* <img src="../layouts/2.jpg" /> */}
+			</div>
+		)
+	}
 }
-export default Home;
+export default Home
