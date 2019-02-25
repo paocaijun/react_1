@@ -1,6 +1,14 @@
 .common-page {
+	p {
+		/*重置*/
+		margin-bottom: 0;
+	}
 	.bread {
 		height: 40px;
 		line-height: 40px;
+		font-size: 12px;
+		> span {
+			margin-right: 8px;
+		}
 	}
 }

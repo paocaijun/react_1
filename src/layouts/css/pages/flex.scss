@@ -1,0 +1,76 @@
+.flex-section {
+	padding: 30px;
+	background-color: #fff;
+	.wrap {
+		display: flex;
+		width: 600px;
+		margin-bottom: 20px;
+		.left {
+			background: pink;
+			flex: 2 1 100px; /* flex-basis为具体值或者%时，width失效,0%代表无宽度*/
+			width: 200px; /*无效*/
+		}
+		.center {
+			background: lightyellow;
+			flex: 2 1 auto;
+			width: 100px;
+		}
+		.right {
+			background: lightblue;
+			flex: 1 1 200px;
+		}
+		/*已占宽度为100+100px+200，剩余宽度为600-400=200,拉伸系数为2+2+1=5,200/5=40。所以left:100+2*40=180;center:180px;right:280*/
+	}
+	.outer {
+		display: flex;
+		width: 600px;
+		margin-bottom: 20px;
+		background-color: #ded;
+		.item {
+			border: 1px solid #89e;
+			height: 40px;
+			flex: 1; /*拉伸占用剩余空间*/
+		}
+		.item1 {
+			flex: 0 0 50%;
+		}
+		.item2 {
+			width: 50px;
+			flex-shrink: 0; /*不拉伸*/
+		}
+	}
+	.cup {
+		display: flex;
+		flex-direction: column;
+		width: 600px;
+		height: 240px;
+		background-color: #992;
+		> div {
+			padding: 6px 0;
+		}
+		.header {
+			background-color: #99aaaa;
+		}
+		.body {
+			background-color: #8aa;
+			flex: 1;
+			display: flex;
+			.left,
+			.center,
+			.right {
+				border: 1px dashed #989;
+				width: 100px;
+			}
+			.center {
+				flex: 1;
+				// overflow: auto; /* 底部固定，只滚动中间部分*/
+				// p {
+				// 	height: 120px;
+				// }
+			}
+		}
+		.footer {
+			background-color: #99aaaa;
+		}
+	}
+}

@@ -16,7 +16,35 @@ class IconComp extends Component {
 			'android',
 			'smile',
 			'setting'
-		]
+		],
+		aa: {
+			key: 'data',
+			value: '',
+			children: [
+				{
+					key: 'pageNo',
+					value: "true|number|'分页页数'"
+				},
+				{
+					key: 'pageSize',
+					value: "true|number|'分页条数'"
+				},
+				{
+					key: 'result',
+					value: '',
+					children: [
+						{
+							key: 'id',
+							value: "true|number|'编码'"
+						},
+						{
+							key: 'status',
+							value: "true|number|'状态'"
+						}
+					]
+				}
+			]
+		}
 	}
 	render() {
 		let iconList = []

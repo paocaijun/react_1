@@ -25,6 +25,10 @@ class MainPage extends Component {
 						url: '/ui/icons'
 					},
 					{
+						label: '弹性布局',
+						url: '/ui/flex'
+					},
+					{
 						label: '加载中',
 						url: '/ui/buttons'
 					}
