@@ -42,6 +42,15 @@ class FlexComp extends React.Component {
 						</div>
 						<div className="footer">底部</div>
 					</div>
+					<ul className="ul">
+						<li>11</li>
+						<li>
+							<div />
+						</li>
+						<li />
+						<li>33</li>
+						<li>33</li>
+					</ul>
 				</div>
 			</div>
 		)

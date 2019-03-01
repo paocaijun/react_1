@@ -73,4 +73,32 @@
 			background-color: #99aaaa;
 		}
 	}
+	.ul {
+		// li:nth-of-type(odd) {
+		// 	background-color: gold;
+		// }
+		li:nth-child(3n) {
+			height: 50px;
+			width: 600px;
+			background: url(../../img/2.jpg) top left no-repeat, url(../../img/timg.jpg) bottom right no-repeat;
+			background-size: contain;
+		}
+		li:nth-child(4n + 1) {
+			background-color: pink;
+			transition: all 1s ease;
+			&:hover {
+				background-color: #6a6;
+			}
+		}
+		@keyframes showDiv {
+			0% {
+				top: 0;
+				left: 0;
+			}
+			100% {
+				top: 200px;
+				left: 100px;
+			}
+		}
+	}
 }
