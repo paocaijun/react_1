@@ -9,33 +9,5 @@
 	<body>
 		<div id="app"></div>
 		<script src="./bundle.js"></script>
-		<script>
-			// 工厂函数
-			function person(hair, name) {
-				var o = new Object()
-				o.hair = hair
-				o.name = name
-				o.sayHair = function() {
-					console.log('hair', this, this.hair)
-				}
-				return o
-			}
-			let p1 = person('pink', '小粉')
-			p1.sayHair()
-			// 构造函数
-			function Per(hair, name) {
-				this.hair = hair
-				this.name = name
-				this.sayHair = function() {
-					console.log('hair1', this, this.hair)
-				}
-			}
-			let p2 = new Per('blue', '小蓝')
-			p2.sayHair()
-			let aa = {}
-			console.log('a', aa.__proto__ === Object.prototype)
-			function bb() {}
-			console.log('ab', bb.__proto__, bb.__proto__.__proto__ === Object.prototype)
-		</script>
 	</body>
 </html>

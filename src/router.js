@@ -6,6 +6,7 @@ import Home from '@/pages/home'
 import Buttons from '@/pages/ui/buttons'
 import IconComp from '@/pages/ui/icon'
 import FlexComp from '@/pages/ui/flex'
+import TodoList from '@/pages/ui/todoList'
 class CRouter extends Component {
 	render() {
 		return (
@@ -18,6 +19,7 @@ class CRouter extends Component {
 					<Route path={'ui/buttons'} component={Buttons} />
 					<Route path={'ui/icons'} components={IconComp} />
 					<Route path={'ui/flex'} components={FlexComp} />
+					<Route path={'ui/todolist'} components={TodoList} />
 				</Route>
 			</Router>
 		)

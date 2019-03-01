@@ -1,6 +1,15 @@
 import React from 'react'
 import '@/layouts/css/pages/flex'
 class FlexComp extends React.Component {
+	constructor(props) {
+		// 必须调用super(), super表示父类的构造函数
+		super(props)
+		this.skin = 'white'
+		this.eyeColor = 'white'
+	}
+	componentWillMount() {
+		console.log('this', this.skin, this.props)
+	}
 	state = {}
 	render() {
 		return (
@@ -42,7 +51,7 @@ class FlexComp extends React.Component {
 						</div>
 						<div className="footer">底部</div>
 					</div>
-					<ul className="ul">
+					{/* <ul className="ul">
 						<li>11</li>
 						<li>
 							<div />
@@ -50,7 +59,7 @@ class FlexComp extends React.Component {
 						<li />
 						<li>33</li>
 						<li>33</li>
-					</ul>
+					</ul> */}
 				</div>
 			</div>
 		)

@@ -29,6 +29,10 @@ class MainPage extends Component {
 						url: '/ui/flex'
 					},
 					{
+						label: 'Todo',
+						url: '/ui/todolist'
+					},
+					{
 						label: '加载中',
 						url: '/ui/buttons'
 					}
