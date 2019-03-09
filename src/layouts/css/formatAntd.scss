@@ -1,0 +1,9 @@
+$primaryColor: #404040;
+.ant-menu.ant-menu-dark .ant-menu-item-selected,
+.ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
+	background-color: #5f5f5f !important;
+}
+.ant-btn-primary {
+	background-color: $primaryColor !important;
+	border-color: $primaryColor !important;
+}

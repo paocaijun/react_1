@@ -1,5 +1,6 @@
 #app {
 	height: 100%;
+	color: #333;
 	.main-index {
 		height: 100%;
 		.main-page {
@@ -19,11 +20,24 @@
 		padding-left: 10px;
 		padding-right: 10px;
 	}
+	.pr10 {
+		padding-right: 10px;
+	}
 	.p20 {
 		padding: 20px;
 	}
 	.pt20 {
 		padding-top: 20px;
+	}
+	.plr20 {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+	.pr20 {
+		padding-right: 20px;
+	}
+	.mr10 {
+		margin-right: 10px;
 	}
 	.fs12 {
 		font-size: 12px;
@@ -34,4 +48,61 @@
 	.fs16 {
 		font-size: 16px;
 	}
+	.color333 {
+		color: #333;
+	}
+	.color666 {
+		color: #666;
+	}
+	.color999 {
+		color: #999;
+	}
+}
+ul,
+ol {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+hr,
+button,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	margin: 0;
+	padding: 0;
 }
