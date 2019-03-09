@@ -1,13 +1,14 @@
 var webpack = require('webpack');
 const path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+console.log('__dirname', __dirname);
 
 module.exports = {
     entry: __dirname + '/src/main.js', //指明编译开始的入口
     output: {
-        path: path.join(__dirname, 'bundle'), //指明编译好的文件所在目录
+        path: path.join(__dirname, 'dist'), //指明编译好的文件所在目录
         publicPath: '',
-        filename: 'bundle.js'
+        filename: '[name].js'
     },
     resolve: {
         alias: {
