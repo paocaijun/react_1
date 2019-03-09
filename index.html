@@ -8,6 +8,9 @@
 
     <body>
         <div id="app"></div>
-        <script src="js/apps.js"></script>
+        <!-- <script src="js/apps.js"></script> -->
+        <script src="<%= htmlWebpackPlugin.files.chunks.apps.entry %>"></script>
+
+        <!-- <%= htmlWebpackPlugin.options.date %> -->
     </body>
 </html>

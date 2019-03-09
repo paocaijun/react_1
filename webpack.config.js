@@ -4,7 +4,8 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
-        apps: __dirname + '/src/main.js'
+        apps: __dirname + '/src/main.js',
+        vendors: ['react', 'react-router']
     }, //指明编译开始的入口
     output: {
         path: path.join(__dirname, 'dist'), //指明编译好的文件所在目录
@@ -19,9 +20,10 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            inject: false, //head ,body
+            inject: 'body', //head ,body
             filename: 'index.html', //生成的文件名
-            template: path.join(__dirname, 'index.html')
+            template: path.join(__dirname, 'index.html'),
+            date: '1222'
         })
     ],
     module: {
