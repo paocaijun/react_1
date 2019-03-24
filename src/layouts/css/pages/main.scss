@@ -3,9 +3,55 @@
 		height: 60px;
 		line-height: 60px;
 		background: #fff;
-		.toggle-icon {
+		display: flex;
+		padding-left: 18px;
+		padding-right: 30px;
+
+		.left-nav {
 			font-size: 18px;
-			padding-left: 18px;
+		}
+		.main-nav {
+			flex-grow: 1;
+		}
+		.name-nav {
+			padding-left: 20px;
+			font-weight: 500;
+			position: relative;
+			cursor: pointer;
+			span.icon {
+				transition: all 0.2s;
+				display: inline-block;
+			}
+			.user-name {
+				padding-right: 6px;
+			}
+			.pop-section {
+				position: absolute;
+				top: 60px;
+				padding: 10px;
+				background: #fff;
+				min-width: 150px;
+				border: 1px solid #ebeef5;
+				box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+				display: none;
+				line-height: 34px;
+				font-size: 12px;
+				z-index: 10;
+			}
+			&:hover {
+				span.icon {
+					transform: rotate(180deg);
+				}
+				.pop-section {
+					display: block;
+				}
+			}
+		}
+		.right-nav {
+			font-weight: 500;
+			min-width: 140px;
+			color: #444;
+			padding-left: 20px;
 		}
 	}
 	.main-content {
@@ -88,6 +134,46 @@
 					margin-top: 20px;
 				}
 			}
+		}
+	}
+}
+.todo-page {
+	.todo-section {
+		background-color: #fff;
+		padding: 30px;
+		.new-type {
+			.ant-input {
+				width: 200px;
+				margin-right: 20px;
+			}
+		}
+		ul:nth-of-type(1) {
+			margin: 20px 0;
+			.todo-items {
+				padding: 4px 0;
+				&:hover {
+					.delete-icon {
+						display: inline-block;
+					}
+				}
+				.order {
+					background-color: #404040;
+					padding: 0 4px;
+					margin-right: 5px;
+					display: inline-block;
+					color: #fff;
+					font-weight: 600;
+				}
+				.delete-icon {
+					cursor: pointer;
+					font-size: 12px;
+					padding-left: 10px;
+					display: none;
+				}
+			}
+		}
+		.bg-image {
+			background: url(../../img/miao.jpg) no-repeat;
 		}
 	}
 }

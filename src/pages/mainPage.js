@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Layout, Menu, Icon, Button } from 'antd'
+import { Layout, Menu, Icon, Popover } from 'antd'
 import { Link } from 'react-router'
 const { Header, Sider, Content, Footer } = Layout
 const SubMenu = Menu.SubMenu
@@ -44,11 +44,32 @@ class MainPage extends Component {
 				childrens: ['基础动画', '动画案例']
 			}
 		],
-		collapsed: false
+		collapsed: false,
+		nowTime: new Date(),
+		userName: ''
 	}
-	toogleCol = para => {
-		this.setState({ collapsed: !this.state.collapsed })
+	toogleCol = () => {
+		this.setState(preState => ({ collapsed: !preState.collapsed }))
 	}
+	componentWillMount() {
+		this.userName = localStorage.getItem('userName')
+	}
+	componentDidMount() {
+		this.timerID = setInterval(() => this.timeUpdate(), 1000)
+	}
+	componentWillUnmount() {
+		clearInterval(this.timerID)
+	}
+	timeUpdate() {
+		this.setState({ nowTime: new Date() })
+	}
+	timeComputed(time) {
+		let handleDate = `${time.getFullYear()}-${time.getMonth() + 1}-${time.getDate()}`
+		let handleTime = `${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`
+		return `${handleDate}   ${handleTime}`
+	}
+	loginOut = () => {}
+	assignAccount = () => {}
 	render() {
 		var menuItems = []
 		menuItems = this.state.menuList.map((item, i) => {
@@ -85,6 +106,22 @@ class MainPage extends Component {
 				)
 			}
 		})
+		let button = null
+		if (this.userName) {
+			button = (
+				<div className="pop-section">
+					<div>修改密码</div>
+					<div onClick={this.assignAccount}>退出</div>
+				</div>
+			)
+		} else {
+			button = (
+				<div className="pop-section" onClick={this.loginOut}>
+					注册账号
+				</div>
+			)
+		}
+		let content = <div class="pop-content">iii</div>
 		return (
 			<div className="main-page">
 				<Layout>
@@ -95,9 +132,19 @@ class MainPage extends Component {
 					</Sider>
 					<Content>
 						<div className="nav">
-							<span onClick={this.toogleCol} className=" toggle-icon">
+							<div className="left-nav" onClick={this.toogleCol}>
 								<Icon type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} />
-							</span>
+							</div>
+							<div className="main-nav" />
+							<div className="name-nav">
+								<span className="user-name">{this.userName || 'Guest'}</span>
+								<span className="icon">
+									<Icon type="caret-down" />
+								</span>
+
+								{button}
+							</div>
+							<div className="right-nav">{this.timeComputed(this.state.nowTime)}</div>
 						</div>
 						<div className="main-content">{this.props.children}</div>
 					</Content>
