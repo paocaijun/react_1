@@ -21,3 +21,5 @@ url-loader 处理图片打包，name: 'img/[name].[ext]'，表示打包之后的
 <img src='./img/1.jpg'> js文件一律打包到bundle文件内
 或者 import imgSrc from '@/layouts/img/1.jpg ' 再赋值给src
 5、node降版本：node升级到10后报错，卸载node，到node官网下方绿色字体All download options，下载以x64.msi结尾的版本
+6、使用promise之后，编译报错，Can't resolve 'fs' ,解决办法，在webpack配置中加上node: {fs: 'empty'}
+7、

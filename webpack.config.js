@@ -1,5 +1,7 @@
 var webpack = require('webpack')
 const path = require('path')
+var proxy = require('./proxy')
+
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
@@ -67,5 +69,14 @@ module.exports = {
 				}
 			}
 		]
+	},
+	node: {
+		fs: 'empty'
+	},
+	devServer: {
+		proxy,
+		headers: {
+			'Access-Control-Allow-Origin': '*'
+		}
 	}
 }

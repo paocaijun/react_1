@@ -11,8 +11,7 @@ class CRouter extends Component {
 	render() {
 		return (
 			<Router history={hashHistory}>
-				{/* <Route path={"/"} component={App} /> */}
-				{/* <Route path={"/home"} component={Home} /> */}
+				<Route path={'/'} component={App} />
 				<Route path={'/'} component={MainPage}>
 					<IndexRedirect to="/index" />
 					<Route path={'index'} component={Home} />

@@ -1,26 +1,27 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import '@/layouts/css/index.scss'
-import { createStore } from 'redux'
 import CRouter from './router.js'
-console.log('React', React)
-const rootReducer = function(state, action) {
-	if (typeof state === 'undefined') {
-		return 0
-	}
-	switch (action.type) {
-		case 'add_five':
-			return state + 5
-		case 'add_ten':
-			return state + 10
-		default:
-			return state
-	}
-	return state
-}
-// import {rootReducer} from './reducers'
 import { Provider } from 'react-redux'
-const store = createStore(rootReducer)
+import store from './store'
+// import { createStore } from 'redux'
+// console.log('React', React)
+// const rootReducer = function(state, action) {
+// 	if (typeof state === 'undefined') {
+// 		return 0
+// 	}
+// 	switch (action.type) {
+// 		case 'add_five':
+// 			return state + 5
+// 		case 'add_ten':
+// 			return state + 10
+// 		default:
+// 			return state
+// 	}
+// 	return state
+// }
+// createStore生成store,store是保存数据的地方
+// const store = createStore(rootReducer)
 // 定义render函数,Component为CRouter
 const render = Component => {
 	ReactDOM.render(
