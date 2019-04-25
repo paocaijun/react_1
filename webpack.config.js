@@ -1,7 +1,6 @@
 var webpack = require('webpack')
 const path = require('path')
 var proxy = require('./proxy')
-
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
