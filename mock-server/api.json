@@ -1,0 +1,35 @@
+{
+	"登入": [
+		{
+			"url": "/portal/login",
+			"desc": "用户登入",
+			"mock": true,
+			"res": {
+				"code": 0,
+				"msg": "xxxx",
+				"data": {
+					"uname": "@cword(5,8)",
+					"uid": 9,
+					"sessionId": "vlfyjfkhglhglihuigylvbhjbjgvhj",
+					"groupId": 500325,
+					"groupName": "@cword(4,10)",
+					"utype": 2,
+					"mold|1": [0, 1]
+				}
+			}
+		},
+		{
+			"url": "/portal/sys/user_group/switch",
+			"desc": "切换业务实体",
+			"mock": true,
+			"res": {
+				"code": 0,
+				"msg": "success",
+				"data": {
+					"userGroupId": 500325
+				}
+			}
+		}
+	],
+	"home": []
+}

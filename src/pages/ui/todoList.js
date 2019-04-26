@@ -1,8 +1,11 @@
 import React from 'react'
+
 import NewType from '@/components/ui/newType'
 import { Icon } from 'antd'
 import imgUrl from '@/layouts/img/1.jpg'
-
+import 'whatwg-fetch'
+import 'es6-promise'
+import { rejects } from 'assert'
 class TodoList extends React.Component {
 	constructor() {
 		super()
@@ -21,22 +24,30 @@ class TodoList extends React.Component {
 		rows.splice(key, 1)
 		this.setState({ todolist: rows })
 	}
+	testfn(pa) {
+		fetch('/api/portal/login', {
+			method: 'GET',
+			credentials: 'include'
+		})
+			.then(response => {
+				return response.json().then(json => {
+					if (response.ok) {
+						return json
+					} else {
+						console.log('失败', response.status)
+					}
+				})
+			})
+			.then(response => {
+				console.log(111, response)
+			})
+			.catch(error => {
+				console.log(222, error.message)
+			})
+	}
+
 	componentDidMount() {
-		class Person {
-			constructor(x, y) {
-				this.x = x
-				this.y = y
-			}
-			toSay() {
-				console.log('say', this.x)
-			}
-			toDo() {
-				console.log('this', this)
-				this.toSay()
-			}
-		}
-		let p1 = new Person('哈哈')
-		p1.toDo()
+		this.testfn(20)
 	}
 	render() {
 		return (

@@ -1,6 +1,7 @@
-var webpack = require('webpack');
-const path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+var webpack = require('webpack')
+const path = require('path')
+var proxy = require('./proxy')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
 	entry: __dirname + '/src/main.js', //指明编译开始的入口
@@ -67,5 +68,14 @@ module.exports = {
 				}
 			}
 		]
+	},
+	node: {
+		fs: 'empty'
+	},
+	devServer: {
+		proxy,
+		headers: {
+			'Access-Control-Allow-Origin': '*'
+		}
 	}
 }
