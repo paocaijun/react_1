@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { Row, Col } from 'antd'
-// import img1 from '@/layouts/2.jpg';
 import EchartsView from '@/components/EchartsView'
 import EchartsVisitStatic from '@/components/EchartsVisitStatic'
-
+// 图片取打包之后的路径
 class Home extends Component {
 	render() {
 		return (
@@ -105,7 +104,7 @@ class Home extends Component {
 						</div>
 					</Col>
 				</Row>
-				{/* <img src="../layouts/2.jpg" /> */}
+				<img src="../img/2.jpg" />
 			</div>
 		)
 	}

@@ -4,7 +4,7 @@ var proxy = require('./proxy')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-	entry: __dirname + '/src/main.js', //指明编译开始的入口
+	entry: __dirname + '/src/App.js', //指明编译开始的入口
 	output: {
 		path: path.join(__dirname, 'bundle'), //指明编译好的文件所在目录
 		publicPath: '',
@@ -63,7 +63,7 @@ module.exports = {
 				test: /\.(png|jpg|gif|webp)$/,
 				loader: 'url-loader',
 				options: {
-					limit: 8192,
+					limit: 8192, //小于8k的转为base64
 					name: 'img/[name].[ext]'
 				}
 			}

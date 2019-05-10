@@ -24,31 +24,7 @@ class TodoList extends React.Component {
 		rows.splice(key, 1)
 		this.setState({ todolist: rows })
 	}
-	testfn(pa) {
-		fetch('/api/portal/login', {
-			method: 'GET',
-			credentials: 'include'
-		})
-			.then(response => {
-				return response.json().then(json => {
-					if (response.ok) {
-						return json
-					} else {
-						console.log('失败', response.status)
-					}
-				})
-			})
-			.then(response => {
-				console.log(111, response)
-			})
-			.catch(error => {
-				console.log(222, error.message)
-			})
-	}
 
-	componentDidMount() {
-		this.testfn(20)
-	}
 	render() {
 		return (
 			<div className="todo-page common-page">

@@ -25,10 +25,11 @@ app.set('jsonp callback name', 'callback')
 app.use(function(req, res) {
 	var data
 	var delay = 0
+	// console.log('req', req.originalUrl) // 请求的路径
 	for (var group in api) {
 		if (
 			api[group].find(function(reqData) {
-				console.log('reqData', reqData, reqData.regexp)
+				console.log('reqData11111111111', reqData.url) // 循环api.json已有的路径
 				if (reqData.regexp) {
 					if (!new RegExp(reqData.url).test(req.originalUrl)) {
 						// reqData.url请求地址

@@ -3,12 +3,12 @@
 使用 scss,但是不需要安装 scss，安装 sass,css,style 的 loader+node-sass
 react16 // 去掉了 getInitialState 这个 hook 函数
 1、修改 this 指向方法：
-onClick={() => this.handleNew()} (传参数时，用这个)
+onClick={() => this.handleNew()} (传参数时，用这个，点击时调用箭头函数，并调用 handleNew ),如果 onClick={this.handleNew(pa)} 直接调用并非点击时才调用
 this.closeOverlay = this.closeOverlay.bind(this)
 handleAdd = () => {console.log('hahah', this)}
 2、todo 数据新增后未触发视图更新，需要 setState(尴尬：只是子数组更新了)
 Q: onClick={this.handleDel(i)},会自调用
-修改 state 数据时，不能直接设置 this.state.list.splice(1,2)，用 setState 方法，接受一个对象，但如果赋值为计算属性给 setState 传递一个函数，this.setState((prevState, props) => ({counter: prevState.counter + props.increment}));
+修改 state 数据时，不能直接设置 this.state.list.splice(1,2)，用 setState 方法，参数接受一个对象，也可以给 setState 传递一个函数，this.setState((prevState, props) => ({counter: prevState.counter + props.increment}));
 setState 方法是一个异步的方法，React 会将所有的 setState 方法打包成一次进行更新，类似于快递点寄快递，囤积了一些包裹后一次投递，而不是你每次修改 state 都会进行更新。
 3、 函数定义组件 function ElementTest(prop) {return <div title={prop.title}>{prop.title}</div>}
 关于打包
@@ -22,4 +22,8 @@ url-loader 处理图片打包，name: 'img/[name].[ext]'，表示打包之后的
 或者 import imgSrc from '@/layouts/img/1.jpg ' 再赋值给src
 5、node降版本：node升级到10后报错，卸载node，到node官网下方绿色字体All download options，下载以x64.msi结尾的版本
 6、使用promise之后，编译报错，Can't resolve 'fs' ,解决办法，在webpack配置中加上node: {fs: 'empty'}
-7、
+（fs不是node自带的模块么？）
+7、行内样式的写法： TODO:
+一般是<div style='color:red'>
+在react里是<div style={{color:"red",fontSize:"12px"}}>,双重大括号将样式包裹，属性名采用驼峰，属性引号包裹,逗号分隔
+8、修改state的数据方式

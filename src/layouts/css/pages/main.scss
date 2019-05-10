@@ -177,3 +177,32 @@
 		}
 	}
 }
+.singer-item {
+	&:hover {
+		.singer-edit {
+			width: 26px;
+			// display: inline-block;
+			// transform: translate(100px) rotate(180deg);
+			transform-origin: top left;
+			opacity: 1;
+		}
+	}
+	.singer-edit {
+		padding-left: 10px;
+		width: 0;
+		opacity: 0;
+		transition: opacity 1s;
+	}
+}
+.common-modal {
+	.modal-content {
+		.label {
+			display: inline-block;
+			line-height: 32px;
+		}
+		.col-x {
+			padding-bottom: 18px;
+		}
+	}
+}
+

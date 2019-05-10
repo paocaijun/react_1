@@ -1,0 +1,20 @@
+.singer-main,
+.tree-main {
+	margin-top: 20px;
+	padding: 10px;
+	background-color: #fff;
+	.pnode {
+		padding: 40px;
+		background-color: #dededd;
+		display: flex;
+		.part1 {
+			width: 100px;
+			border: 1px dashed pink;
+		}
+		.part2 {
+			flex: 0 1 200px;
+			background-color: pink;
+			padding: 10px 0;
+		}
+	}
+}
