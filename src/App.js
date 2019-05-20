@@ -4,7 +4,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import '@/layouts/css/index.scss'
-import CRouter from './router.js'
+import CRouter from './router/router.js'
 import { Provider } from 'react-redux'
 import store from './store'
 // 定义render函数,Component为CRouter

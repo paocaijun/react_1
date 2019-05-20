@@ -121,7 +121,23 @@
 			}
 		}
 	],
-	"home": [],
+	"news": [
+		{
+			"url": "/news/newslist",
+			"desc": "news列表",
+			"mock": true,
+			"res": {
+				"code": 0,
+				"msg": "success",
+				"data|7": [
+					{
+						"title|+1": ["维秘关闭53家门店新", "环球度假区将开园新", "韩国生育率跌破1", "嫦娥四号第三月昼"],
+						"time": "2019"
+					}
+				]
+			}
+		}
+	],
 	"default": [
 		{
 			"url": "/xxx",

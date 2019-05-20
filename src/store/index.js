@@ -1,5 +1,7 @@
-import { createStore } from 'redux'
-import reducer from './reducer/index.js'
-let store = createStore(reducer)
-console.log('store', store.getState())
+import { createStore, applyMiddleware } from 'redux'
+import reducers from './reducer/index.js'
+import thunk from 'redux-thunk'
+import { composeWithDevTools } from 'redux-devtools-extension'
+let store = createStore(reducers, composeWithDevTools(applyMiddleware(thunk)))
+// console.log('store', store.getState())
 export default store

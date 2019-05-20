@@ -62,6 +62,7 @@ class AreaTree extends React.Component {
 		this.state.handledArr = loop(brr)
 	}
 	componentWillMount() {
+		console.log('mounted tree')
 		this.initTreeData()
 	}
 	// 递归查找.pnode

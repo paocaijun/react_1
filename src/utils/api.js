@@ -39,5 +39,6 @@ export default {
 	// music
 	getMusicData: params => post('/api/music/datalist', params),
 	editData: params => post('/api/xxx', params),
-	getAreaTree: params => post('/api/music/areaTree', params)
+	getAreaTree: params => post('/api/music/areaTree', params),
+	getNewsList: params => post('/api/news/newslist', params)
 }
