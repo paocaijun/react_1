@@ -1,4 +1,18 @@
 .main-page {
+	position: relative;
+	.load-modal {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		z-index: 100;
+		background: hsla(0, 0%, 100%, 0.6);
+		.ant-spin {
+			position: absolute;
+			top: 35%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+	}
 	.nav {
 		height: 60px;
 		line-height: 60px;
@@ -205,4 +219,6 @@
 		}
 	}
 }
-
+.preview-image {
+	height: 80px;
+}

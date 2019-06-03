@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Layout, Menu, Icon, Popover, Spin } from 'antd'
 import { Link } from 'react-router'
+import { connect } from 'react-redux'
 const { Header, Sider, Content, Footer } = Layout
 const SubMenu = Menu.SubMenu
 import '@/layouts/css/pages/main'
@@ -19,20 +20,12 @@ class DashBoard extends Component {
 					iconType: 'rocket',
 					childrens: [
 						{
-							label: '按钮',
-							url: '/ui/buttons'
-						},
-						{
 							label: '图标',
 							url: '/ui/icons'
 						},
 						{
 							label: '弹性布局',
 							url: '/ui/flex'
-						},
-						{
-							label: '加载中',
-							url: '/ui/buttons'
 						}
 					]
 				},
@@ -65,6 +58,10 @@ class DashBoard extends Component {
 						{
 							label: '树形结构',
 							url: '/proxy/tree'
+						},
+						{
+							label: '歌手list',
+							url: '/proxy/singer'
 						}
 					]
 				}
@@ -87,6 +84,10 @@ class DashBoard extends Component {
 	componentWillUnmount() {
 		clearInterval(this.timerID)
 	}
+	componentWillReceiveProps(nextProps) {
+		// console.log('nextProps dash', nextProps)
+		this.state.LoadingDisplay = nextProps.loading ? 'block' : 'none'
+	}
 	timeUpdate() {
 		this.setState({ nowTime: new Date() })
 	}
@@ -97,9 +98,8 @@ class DashBoard extends Component {
 	}
 	loginOut = () => {}
 	assignAccount = () => {}
-	render() {
-		var menuItems = []
-		menuItems = this.state.menuList.map((item, i) => {
+	initMenu() {
+		var menuItems = this.state.menuList.map((item, i) => {
 			let subItems = []
 			item.childrens &&
 				item.childrens.forEach((j, k) => {
@@ -133,6 +133,9 @@ class DashBoard extends Component {
 				)
 			}
 		})
+		return menuItems
+	}
+	render() {
 		let button = null
 		if (this.userName) {
 			button = (
@@ -150,13 +153,13 @@ class DashBoard extends Component {
 		}
 		return (
 			<div className="main-page">
-				<div style={{ display: this.state.LoadingDisplay }}>
+				<div style={{ display: this.state.LoadingDisplay }} className="load-modal">
 					<Spin tip="Loading..." />
 				</div>
 				<Layout>
 					<Sider collapsed={this.state.collapsed}>
 						<Menu theme="dark" mode="inline" inlineCollapsed={this.state.collapsed} defaultSelectedKeys={['/index']}>
-							{menuItems}
+							{this.initMenu()}
 						</Menu>
 					</Sider>
 					<Content>
@@ -182,4 +185,4 @@ class DashBoard extends Component {
 		)
 	}
 }
-export default DashBoard
+export default connect(state => ({ loading: state.common.loading }))(DashBoard)

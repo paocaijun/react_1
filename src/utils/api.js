@@ -2,6 +2,10 @@
 import { message } from 'antd'
 import 'whatwg-fetch'
 import 'es6-promise'
+import store from '@/store/index'
+import action from '@/store/actions/common'
+const { toggleLoading } = action
+
 export function request(url, method = 'GET', paramsObj) {
 	return fetch(url, {
 		method: method,
@@ -13,6 +17,10 @@ export function request(url, method = 'GET', paramsObj) {
 		body: JSON.stringify(paramsObj) // JSON.stringify(paramsObj)
 	}).then(response => {
 		return new Promise((resolve, reject) => {
+			// 清除loading
+			setTimeout(() => {
+				store.dispatch(toggleLoading(false))
+			}, 500)
 			if (response.status === 200) {
 				return response
 					.json()
@@ -40,5 +48,6 @@ export default {
 	getMusicData: params => post('/api/music/datalist', params),
 	editData: params => post('/api/xxx', params),
 	getAreaTree: params => post('/api/music/areaTree', params),
-	getNewsList: params => post('/api/news/newslist', params)
+	getNewsList: params => post('/api/news/newslist', params),
+	getsingerData: params => post('/api/music/singerData', params)
 }

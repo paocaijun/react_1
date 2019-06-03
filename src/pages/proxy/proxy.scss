@@ -1,0 +1,21 @@
+.todo-section {
+	#tabBox {
+		.btns {
+			padding: 6px 30px;
+			background: #fff;
+			border: 1px solid #e3e3e3;
+			&.on {
+				background-color: #001529;
+				border: 1px solid #001529;
+				color: #fff;
+			}
+		}
+		.inner-box {
+			min-height: 60px;
+			display: none;
+			&.show {
+				display: block;
+			}
+		}
+	}
+}

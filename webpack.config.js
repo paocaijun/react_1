@@ -4,11 +4,14 @@ var proxy = require('./proxy')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-	entry: __dirname + '/src/App.js', //指明编译开始的入口
+	//指明编译开始的入口
+	entry: {
+		apps: __dirname + '/src/App.js',
+		vendors: ['react', 'redux', 'react-dom', 'react-router']
+	},
 	output: {
-		path: path.join(__dirname, 'bundle'), //指明编译好的文件所在目录
-		publicPath: '',
-		filename: 'bundle.js'
+		filename: '[name]-[hash].js',
+		path: path.join(__dirname, 'dist/js') //指明编译好的文件所在目录
 	},
 	resolve: {
 		alias: {
@@ -18,11 +21,15 @@ module.exports = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			inject: false,
 			filename: './index.html',
 			template: path.join(__dirname, 'index.html')
+		}),
+		// 提取vendor
+		new webpack.optimize.CommonsChunkPlugin({
+			name: ['vendor', 'manifest']
 		})
 	],
+	devtool: 'source-map',
 	module: {
 		rules: [
 			{

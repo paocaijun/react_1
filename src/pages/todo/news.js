@@ -3,7 +3,14 @@ import NewType from '@/components/ui/newType'
 import { Icon } from 'antd'
 import { connect } from 'react-redux'
 import actions from '@/store/actions/news'
-const { getNewsListAction, delNewsAction } = actions
+import actionsIndex from '@/store/actions/common'
+import img1 from '@/layouts/img/1.jpg'
+import img2 from '@/layouts/img/2.jpg'
+
+import '@/utils/picPreview'
+
+const { getNewsListAction, delNewsAction, addNewsAction } = actions
+const { toggleLoading } = actionsIndex
 
 class TodoList extends React.Component {
 	constructor(props) {
@@ -11,18 +18,46 @@ class TodoList extends React.Component {
 		this.state = { dataList: [] }
 	}
 
-	handleAdd(rows) {
-		this.setState({ todolist: rows })
+	handleAdd = title => {
+		const { addNewsAction } = this.props
+		addNewsAction({ title: title, dated: new Date() })
 	}
 	componentWillReceiveProps(nextProps) {
 		const { dataList } = nextProps.newsPage.newsReducer
 		this.setState({ dataList: dataList })
 		// 删除数据之后会自动更新props
-		console.log('nextProps', nextProps)
+		// console.log('nextProps in news', nextProps)
 	}
 	componentWillMount() {
-		const { getNewsListAction } = this.props
+		const { getNewsListAction, toggleLoading } = this.props
+		// toggleLoading(true)
 		getNewsListAction()
+	}
+	componentDidMount() {
+		let yn = new yPreview()
+		yn.init({
+			name: 'yourNewName',
+			elem: 'preview-image'
+		})
+		// this.doPrint('todo-section')
+	}
+	// 打印
+	doPrint(elClass) {
+		let iframe = document.querySelector('#printWrap')
+		if (!iframe) {
+			let el = document.querySelector(`.${elClass}`)
+			if (el) {
+				iframe = document.createElement('IFRAME')
+				iframe.setAttribute('id', 'printWrap')
+				iframe.setAttribute('style', 'position:absolute;width:0;height:0;top:100px;left:-500px;top:-500px;')
+				document.body.appendChild(iframe)
+				let doc = iframe.contentWindow.document
+				doc.write('<div>' + el.innerHTML + '</div>')
+				doc.close()
+				// iframe.contentWindow.focus()
+			}
+		}
+		iframe.contentWindow.print()
 	}
 	handleDel(i) {
 		const { delNewsAction } = this.props
@@ -37,8 +72,12 @@ class TodoList extends React.Component {
 					<span>/</span>
 					<span>TODO_NEWS</span>
 				</div>
+				<div>
+					<img src={img1} alt="" className="preview-image" />
+					<img src={img2} alt="" className="preview-image" />
+				</div>
 				<div className="todo-section">
-					<NewType listData={this.state.dataList} onAdd={this.handleAdd} />
+					<NewType onAdd={this.handleAdd} />
 					<ul>
 						{this.state.dataList &&
 							this.state.dataList.map((item, i) => {
@@ -71,6 +110,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 		},
 		delNewsAction(data) {
 			dispatch(delNewsAction(data))
+		},
+		addNewsAction(data) {
+			dispatch(addNewsAction(data))
+		},
+		toggleLoading(data) {
+			dispatch(toggleLoading(data))
 		}
 	}
 }

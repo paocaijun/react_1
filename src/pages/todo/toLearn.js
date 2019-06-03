@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Checkbox } from 'antd'
 import { connect } from 'react-redux'
-import actions from '@/store/actions'
+import actions from '@/store/actions/news'
 class ToLearn extends Component {
 	constructor(props, context) {
 		super(props)
@@ -10,18 +10,18 @@ class ToLearn extends Component {
 		}
 	}
 	changeStatus = ev => {
-		// 调用action
-		this.props.toggleCom(ev.target.itemId)
+		const { toggleCom } = this.props
+		toggleCom(ev.target.itemId)
 	}
+	// componentWillReceiveProps有时会在props并没有改变时触发，所以需要自己加判断
 	componentWillReceiveProps(nextProps) {
-		// redux获取数据
 		const { todos } = nextProps.todo
 		this.setState({
 			toLearnData: [...todos]
 		})
 	}
 	componentDidMount() {
-		let { getTodoList, addTodo } = this.props
+		let { getTodoList } = this.props
 		let datas = [
 			{
 				id: parseInt(Math.random() * 100000), // 多取几位，数据不容易重复
@@ -65,7 +65,7 @@ class ToLearn extends Component {
 		)
 	}
 }
-// export default App
+// export default ToLearn
 export default connect(
 	state => ({
 		...state //此时的state就是todos:[...]数据, 将state,actions 注入到props下

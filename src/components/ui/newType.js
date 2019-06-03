@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Input } from 'antd'
+import { Button, Input, message } from 'antd'
 class TodoItem extends React.Component {
 	constructor() {
 		super()
@@ -10,9 +10,10 @@ class TodoItem extends React.Component {
 	}
 	handleNew(ev) {
 		if (this.state.newValue != '') {
-			let rows = this.props.listData
-			rows.push(this.state.newValue)
-			this.props.onAdd(rows)
+			this.props.onAdd(this.state.newValue)
+			this.setState({ newValue: '' })
+		} else {
+			message.info('请输入内容')
 		}
 	}
 	changeVal(ev) {

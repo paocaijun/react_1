@@ -104,7 +104,6 @@ class Home extends Component {
 						</div>
 					</Col>
 				</Row>
-				<img src="../img/2.jpg" />
 			</div>
 		)
 	}

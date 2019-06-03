@@ -3,7 +3,8 @@
 */
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import actions from './store/actions'
+import actions from './store/actions/common'
+
 class App extends Component {
 	constructor(props, context) {
 		super(props)

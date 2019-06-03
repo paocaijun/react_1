@@ -17,6 +17,7 @@ const ToLearn = AsyncComponent(() => import('@/pages/todo/toLearn'))
 
 const ProxyIndex = AsyncComponent(() => import('@/pages/proxy/index'))
 const AreaTree = AsyncComponent(() => import('@/pages/proxy/areaTree'))
+const SingerList = AsyncComponent(() => import('@/pages/proxy/singerTable'))
 
 class CRouter extends Component {
 	render() {
@@ -34,6 +35,7 @@ class CRouter extends Component {
 					<Route path={'to/tolearn'} components={ToLearn} />
 					<Route path={'proxy/index'} components={ProxyIndex} />
 					<Route path={'proxy/tree'} components={AreaTree} />
+					<Route path={'proxy/singer'} components={SingerList} />
 				</Route>
 			</Router>
 		)

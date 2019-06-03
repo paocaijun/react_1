@@ -5,16 +5,24 @@ const news = {
 	loading: false
 }
 const newsReducer = (state = news, action) => {
-	console.log('action_type in news', action.type)
+	// console.log('action_type in news', action)
+	let temp
 	switch (action.type) {
-		case C.GET_NEWS_LIST:
+		case C.GET_NEWS_LIST_SUCESS:
 			return {
-				dataList: action.payload,
+				dataList: action.result.data.data,
 				loading: false
 			}
 		case C.DEL_NEWS:
-			let temp = Object.assign({}, state)
+			temp = Object.assign({}, state) // state已经是最新的数据了，可直接在state上删除
 			temp.dataList.splice(action.payload, 1)
+			return {
+				dataList: temp.dataList,
+				loading: false
+			}
+		case C.ADD_NEWS:
+			temp = Object.assign({}, state)
+			temp.dataList.unshift(action.payload)
 			return {
 				dataList: temp.dataList,
 				loading: false
