@@ -127,7 +127,7 @@
 			"res": {
 				"code": 0,
 				"msg": "success",
-				"data|7": [
+				"data|12": [
 					{
 						"name|+1": ["杨千嬅", "王菲", "张靓颖", "谭咏麟", "zhangjie", "jj zhou", "a-lin"],
 						"types|+1": ["华语男歌手", "话语女歌手", "欧美女歌手"],

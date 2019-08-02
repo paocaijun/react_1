@@ -5,17 +5,38 @@ import 'es6-promise'
 import store from '@/store/index'
 import action from '@/store/actions/common'
 const { toggleLoading } = action
+import * as C from '@/constants/api.js'
 
-export function request(url, method = 'GET', paramsObj) {
-	return fetch(url, {
+export function request(url, method = 'GET', paramJson) {
+	let fetchObj = {
 		method: method,
 		credentials: 'include',
 		headers: {
 			Accept: 'application/json, text/plain, */*',
-			'Content-Type': 'application/x-www-form-urlencoded'
-		},
-		body: JSON.stringify(paramsObj) // JSON.stringify(paramsObj)
-	}).then(response => {
+			'Content-Type': 'application/json;charset=UTF-8'
+		}
+	}
+	if (method === 'GET') {
+		if (paramJson) {
+			url += '?1=1'
+			for (let key in paramJson) {
+				url += `&${key}`
+				url += `=${paramJson[key]}`
+			}
+		}
+	} else {
+		fetchObj.body = JSON.stringify(paramJson)
+	}
+	// {
+	// 	method: method,
+	// 	credentials: 'include',
+	// 	headers: {
+	// 		Accept: 'application/json, text/plain, */*',
+	// 		'Content-Type': 'application/json;charset=UTF-8'
+	// 	},
+	// 	body: JSON.stringify(paramJson)
+	// }
+	return fetch(url, fetchObj).then(response => {
 		return new Promise((resolve, reject) => {
 			// 清除loading
 			setTimeout(() => {
@@ -45,9 +66,13 @@ let post = (url, params) => request(url, 'POST', params)
 let get = (url, params) => request(url, 'GET', params)
 export default {
 	// music
-	getMusicData: params => post('/api/music/datalist', params),
-	editData: params => post('/api/xxx', params),
-	getAreaTree: params => post('/api/music/areaTree', params),
-	getNewsList: params => post('/api/news/newslist', params),
-	getsingerData: params => post('/api/music/singerData', params)
+	getMusicData: params => post(C.MUSIC_DATA, params),
+	editData: params => post(C.EDIT_DATA, params),
+	getAreaTree: params => post(C.AREA_TREE, params),
+	getNewsList: params => post(C.NEWS_LIST, params),
+	getsingerData: params => post(C.SINGER_DATA, params),
+	// 博客
+	queryBlogData: params => get(C.QUERY_BLOG_DATA, params),
+	queryBlogDetail: params => get(C.QUERY_BLOG_DETAIL, params),
+	createBlog: params => get(C.CREATE_BLOG, params)
 }

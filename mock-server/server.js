@@ -2,7 +2,7 @@ var path = require('path')
 var fs = require('fs')
 var mock = require('mockjs')
 var app = require('express')()
-var port = process.argv.slice(2)[0] || 8080 //2618,浏览器localhost:2618可以看到数据
+var port = process.argv.slice(2)[0] || 8080 //2618,浏览器localhost:2618/api...可以看到数据
 app.listen(port, function() {
 	console.info('Mock server is listening at ' + port)
 })
@@ -29,7 +29,7 @@ app.use(function(req, res) {
 	for (var group in api) {
 		if (
 			api[group].find(function(reqData) {
-				console.log('reqData11111111111', reqData.url) // 循环api.json已有的路径
+				console.log('循环api.json', reqData.url, req.originalUrl) // 循环api.json已有的路径
 				if (reqData.regexp) {
 					if (!new RegExp(reqData.url).test(req.originalUrl)) {
 						// reqData.url请求地址

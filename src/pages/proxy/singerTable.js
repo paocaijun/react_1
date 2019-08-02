@@ -23,10 +23,10 @@ class SingerTable extends React.Component {
 	}
 	render() {
 		const columns = [
-			{ title: 'id', dataIndex: 'id', key: 'id' },
-			{ title: '歌手', dataIndex: 'name', key: 'name' },
-			{ title: '代表作', dataIndex: 'works', key: 'works' },
-			{ title: '粉丝', dataIndex: 'fans', key: 'fans' },
+			{ title: 'id', dataIndex: 'id', key: 'id', width: 200 },
+			{ title: '歌手', dataIndex: 'name', key: 'name', width: 200 },
+			{ title: '代表作', dataIndex: 'works', key: 'works', width: 200 },
+			{ title: '粉丝（万）', dataIndex: 'fans', key: 'fans', width: 200 },
 			{
 				title: '操作',
 				key: 'action',
@@ -55,7 +55,7 @@ class SingerTable extends React.Component {
 							<input type="button" value="tab3" className="btns" />
 						</div>
 						<div className="inner-box show">
-							<Table bordered columns={columns} dataSource={this.state.tableData} />
+							<Table bordered columns={columns} dataSource={this.state.tableData} scroll={{ y: 240 }} />
 						</div>
 						<div className="inner-box">2222</div>
 						<div className="inner-box">33333</div>

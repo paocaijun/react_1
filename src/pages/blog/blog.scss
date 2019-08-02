@@ -1,0 +1,20 @@
+.blog-bg {
+	background: #fff;
+	margin-top: 10px;
+	padding: 10px;
+	.main {
+		display: flex;
+		flex-wrap: wrap;
+		.section {
+			width: 33%;
+			.label {
+				display: inline-block;
+				width: 100px;
+				padding: 8px 20px;
+			}
+			.val {
+				display: inline-block;
+			}
+		}
+	}
+}

@@ -2,6 +2,7 @@ var webpack = require('webpack')
 const path = require('path')
 var proxy = require('./proxy')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
+console.log('1235')
 
 module.exports = {
 	//指明编译开始的入口
@@ -50,7 +51,7 @@ module.exports = {
 			},
 			{
 				test: /\.scss$/,
-				use: ['style-loader', 'css-loader', 'sass-loader?sourceMap']
+				use: ['style-loader', 'css-loader', 'sass-loader?sourceMap'] // loader以数组逆向运行，先运行sass-loader
 			},
 			{
 				//antd样式处理
@@ -81,8 +82,10 @@ module.exports = {
 	},
 	devServer: {
 		proxy,
-		headers: {
-			'Access-Control-Allow-Origin': '*'
-		}
+		// headers: {
+		// 	'Access-Control-Allow-Origin': '*'
+		// },
+		overlay: true,
+		disableHostCheck: true
 	}
 }

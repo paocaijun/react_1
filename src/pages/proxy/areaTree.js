@@ -15,7 +15,7 @@ class AreaTree extends React.Component {
 		console.log('node', node)
 	}
 	initTreeData() {
-		api.getAreaTree().then(res => {
+		api.getAreaTree({ userName: 'tom', password: '2222' }).then(res => {
 			this.state.treeData = this.handleTree(res)
 			this.loopFn(this.state.treeData)
 		})

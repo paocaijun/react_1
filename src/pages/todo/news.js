@@ -6,6 +6,7 @@ import actions from '@/store/actions/news'
 import actionsIndex from '@/store/actions/common'
 import img1 from '@/layouts/img/1.jpg'
 import img2 from '@/layouts/img/2.jpg'
+import $ from 'jquery'
 
 import '@/utils/picPreview'
 
@@ -58,6 +59,25 @@ class TodoList extends React.Component {
 			}
 		}
 		iframe.contentWindow.print()
+	}
+	scroll() {
+		var content = $('#content').html()
+		$('#search-btn').click(function() {
+			$('#content').html(content)
+			var searchText = $('#search').val()
+			if (searchText.length == 0) {
+				return false
+			}
+			var regExp = new RegExp(searchText, 'g')
+			var newHtml = content.replace(
+				regExp,
+				'<span id="result" style="background:yellow;color:red;">' + searchText + '</span>'
+			)
+			$('#content').html(newHtml)
+			var X = $('#result').offset().top
+			var Y = $('#result').offset().left
+			window.scrollTo(X, Y)
+		})
 	}
 	handleDel(i) {
 		const { delNewsAction } = this.props

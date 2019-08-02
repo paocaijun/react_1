@@ -8,7 +8,7 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "webpack-dev-server --hot --inline  --host 0.0.0.0  --port 3005 --colors --content-base ./build",
 		"build": "webpack --config webpack.config.js ",
-		"mock": "node ./mock-server/server.js 2618"
+		"mock": "node ./mock-server/server.js 2619"
 	},
 	"author": "",
 	"license": "ISC",

@@ -19,6 +19,10 @@ const ProxyIndex = AsyncComponent(() => import('@/pages/proxy/index'))
 const AreaTree = AsyncComponent(() => import('@/pages/proxy/areaTree'))
 const SingerList = AsyncComponent(() => import('@/pages/proxy/singerTable'))
 
+const BlogList = AsyncComponent(() => import('@/pages/blog/list'))
+const BlogDetail = AsyncComponent(() => import('@/pages/blog/detail'))
+const BlogCreate = AsyncComponent(() => import('@/pages/blog/create'))
+
 class CRouter extends Component {
 	render() {
 		return (
@@ -36,6 +40,9 @@ class CRouter extends Component {
 					<Route path={'proxy/index'} components={ProxyIndex} />
 					<Route path={'proxy/tree'} components={AreaTree} />
 					<Route path={'proxy/singer'} components={SingerList} />
+					<Route path={'blog/list'} components={BlogList} />
+					<Route path={'blog/detail/:id'} components={BlogDetail} />
+					<Route path={'blog/create'} components={BlogCreate} />
 				</Route>
 			</Router>
 		)
