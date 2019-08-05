@@ -64,6 +64,11 @@ class DashBoard extends Component {
 							url: '/proxy/singer'
 						}
 					]
+				},
+				{
+					title: '博客',
+					iconType: 'skin',
+					url: '/blog/list'
 				}
 			],
 			collapsed: false,

@@ -26,4 +26,4 @@ url-loader 处理图片打包，name: 'img/[name].[ext]'，表示打包之后的
 7、行内样式的写法： TODO:
 一般是<div style='color:red'>
 在react里是<div style={{color:"red",fontSize:"12px"}}>,双重大括号将样式包裹，属性名采用驼峰，属性引号包裹,逗号分隔
-8、修改state的数据方式
+8、修改state的数据方式:setState 异步更新

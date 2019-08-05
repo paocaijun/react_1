@@ -74,5 +74,5 @@ export default {
 	// 博客
 	queryBlogData: params => get(C.QUERY_BLOG_DATA, params),
 	queryBlogDetail: params => get(C.QUERY_BLOG_DETAIL, params),
-	createBlog: params => get(C.CREATE_BLOG, params)
+	createBlog: params => post(C.CREATE_BLOG, params)
 }

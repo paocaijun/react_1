@@ -2,6 +2,7 @@
 	background: #fff;
 	margin-top: 10px;
 	padding: 10px;
+	position: relative;
 	.main {
 		display: flex;
 		flex-wrap: wrap;
@@ -15,6 +16,18 @@
 			.val {
 				display: inline-block;
 			}
+		}
+	}
+	.new-btn {
+		position: absolute;
+		right: 20px;
+		display: inline-block;
+		top: 10px;
+	}
+	.search-line {
+		padding: 10px;
+		.ant-input {
+			margin-right: 10px;
 		}
 	}
 }
