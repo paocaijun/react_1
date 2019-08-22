@@ -1,14 +1,41 @@
 .common-page {
-	p {
-		/*重置*/
-		margin-bottom: 0;
-	}
 	.bread {
 		height: 40px;
 		line-height: 40px;
 		font-size: 12px;
 		> span {
 			margin-right: 8px;
+		}
+	}
+	.form-line {
+		line-height: 46px;
+		.ant-input,
+		.ant-input-password {
+			width: 200px;
+		}
+	}
+}
+.login-page {
+	background: #fff;
+	margin-top: 10px;
+	padding: 10px;
+}
+#app {
+	height: 100%;
+	color: #333;
+	p {
+		margin-bottom: 0;
+	}
+	.main-index {
+		height: 100%;
+		.main-page {
+			height: 100%;
+			.ant-layout {
+				height: 100%;
+				.ant-layout-sider {
+					height: 100%;
+				}
+			}
 		}
 	}
 }

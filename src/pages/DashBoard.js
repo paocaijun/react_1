@@ -4,10 +4,11 @@ import { Link } from 'react-router'
 import { connect } from 'react-redux'
 const { Header, Sider, Content, Footer } = Layout
 const SubMenu = Menu.SubMenu
+import storage from '@/utils/storage'
 import '@/layouts/css/pages/main'
 class DashBoard extends Component {
-	constructor() {
-		super()
+	constructor(props) {
+		super(props)
 		this.state = {
 			menuList: [
 				{
@@ -73,7 +74,7 @@ class DashBoard extends Component {
 			],
 			collapsed: false,
 			nowTime: new Date(),
-			userName: '',
+			username: '',
 			LoadingDisplay: 'none'
 		}
 	}
@@ -81,7 +82,7 @@ class DashBoard extends Component {
 		this.setState(preState => ({ collapsed: !preState.collapsed }))
 	}
 	componentWillMount() {
-		this.userName = localStorage.getItem('userName')
+		this.state.username = storage.getDefaultStorage().getObj('userMsg').realname
 	}
 	componentDidMount() {
 		this.timerID = setInterval(() => this.timeUpdate(), 1000)
@@ -101,7 +102,9 @@ class DashBoard extends Component {
 		let handleTime = `${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`
 		return `${handleDate}   ${handleTime}`
 	}
-	loginOut = () => {}
+	loginOut = () => {
+		this.props.router.push('/login')
+	}
 	assignAccount = () => {}
 	initMenu() {
 		var menuItems = this.state.menuList.map((item, i) => {
@@ -142,11 +145,11 @@ class DashBoard extends Component {
 	}
 	render() {
 		let button = null
-		if (this.userName) {
+		if (this.state.username) {
 			button = (
 				<div className="pop-section">
 					<div>修改密码</div>
-					<div onClick={this.assignAccount}>退出</div>
+					<div onClick={this.loginOut}>退出</div>
 				</div>
 			)
 		} else {
@@ -174,7 +177,7 @@ class DashBoard extends Component {
 							</div>
 							<div className="main-nav" />
 							<div className="name-nav">
-								<span className="user-name">{this.userName || 'Guest'}</span>
+								<span className="user-name">{this.state.username || 'Guest'}</span>
 								<span className="icon">
 									<Icon type="caret-down" />
 								</span>

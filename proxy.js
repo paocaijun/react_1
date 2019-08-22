@@ -6,7 +6,7 @@ module.exports = {
 		secure: false
 	},
 	'/bpi/*': {
-		target: 'http://localhost:3101', // 不能将localhost换成127.0.0.1,why
+		target: 'http://localhost:3102', // 不能将localhost换成127.0.0.1,why
 		secure: false,
 		pathRewrite: {
 			'^/bpi': ''

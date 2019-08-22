@@ -2,6 +2,8 @@ var webpack = require('webpack')
 const path = require('path')
 var proxy = require('./proxy')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+
 console.log('1235')
 
 module.exports = {
@@ -21,6 +23,10 @@ module.exports = {
 		extensions: ['.js', '.jsx', '.css', '.scss', '.json'] // 没带文件后缀时的匹配
 	},
 	plugins: [
+		new BundleAnalyzerPlugin({
+			// openAnalyzer: true,
+			analyzerPort: 2009
+		}),
 		new HtmlWebpackPlugin({
 			filename: './index.html',
 			template: path.join(__dirname, 'index.html')
@@ -39,7 +45,7 @@ module.exports = {
 				loader: 'babel-loader',
 				query: {
 					plugins: [
-						['import', { libraryName: 'antd', style: 'css' }] //antd按需加载
+						['import', { libraryName: 'antd', style: 'css' }] //antd按需加载babel-plugin-import
 					],
 					presets: ['es2015', 'react', 'stage-2']
 				}

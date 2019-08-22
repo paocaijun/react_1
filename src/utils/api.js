@@ -46,14 +46,19 @@ export function request(url, method = 'GET', paramJson) {
 				return response
 					.json()
 					.then(json => {
-						resolve(json.data || json)
+						if (json.errno === 0) {
+							resolve(json.data || json)
+						} else {
+							message.error(json.message)
+							reject()
+						}
 					})
 					.catch(err => {
 						reject('err:' + err)
 					})
 			} else {
 				if (response.status === 404) {
-					message.error('请检查url是否正确')
+					message.error('请检查接口地址是否正确')
 					reject('url错啦')
 				} else {
 					reject('status：' + response.status)
@@ -74,5 +79,7 @@ export default {
 	// 博客
 	queryBlogData: params => get(C.QUERY_BLOG_DATA, params),
 	queryBlogDetail: params => get(C.QUERY_BLOG_DETAIL, params),
-	createBlog: params => post(C.CREATE_BLOG, params)
+	createBlog: params => post(C.CREATE_BLOG, params),
+	editBlog: params => post(C.EDIT_BLOG, params),
+	userLogin: params => post(C.USER_LOGIN, params)
 }

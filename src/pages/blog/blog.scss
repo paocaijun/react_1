@@ -3,19 +3,64 @@
 	margin-top: 10px;
 	padding: 10px;
 	position: relative;
+	.big-title {
+		padding-bottom: 20px;
+		border-bottom: 1px solid #f3f3f3;
+	}
+	.each-blog {
+		border-bottom: 1px solid #f3f3f3;
+		padding: 10px 0;
+		.title {
+			display: flex;
+			padding: 5px 0;
+			cursor: pointer;
+			h3 {
+				flex: 1;
+			}
+			.operate {
+				span {
+					display: inline-block;
+					padding: 3px 20px;
+					margin-right: 10px;
+					cursor: pointer;
+					border: 1px solid #f3f3f3;
+					color: #1890ff;
+				}
+			}
+			align-items: center;
+			.author {
+				color: #666;
+				margin-right: 20px;
+			}
+			.time {
+				color: #999;
+				font-size: 12px;
+			}
+		}
+		.content {
+			color: #999;
+		}
+	}
 	.main {
-		display: flex;
-		flex-wrap: wrap;
-		.section {
-			width: 33%;
-			.label {
+		.blog-title {
+			font-size: 18px;
+		}
+		.title {
+			padding-bottom: 10px;
+			div {
+				margin-right: 20px;
 				display: inline-block;
-				width: 100px;
-				padding: 8px 20px;
+				&.author {
+					color: #666;
+				}
+				&.time {
+					color: #999;
+					font-size: 12px;
+				}
 			}
-			.val {
-				display: inline-block;
-			}
+		}
+		.content {
+			line-height: 26px;
 		}
 	}
 	.new-btn {
@@ -29,5 +74,8 @@
 		.ant-input {
 			margin-right: 10px;
 		}
+	}
+	.line {
+		padding: 10px;
 	}
 }

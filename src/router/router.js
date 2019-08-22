@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Router, Route, IndexRoute, hashHistory, Redirect, IndexRedirect } from 'react-router'
 import AsyncComponent from './lazy'
 // 路由正常加载
-import Test from '../Test'
 import DashBoard from '@/pages/DashBoard'
 // 路由懒加载
 // import会返回一个promise对象
@@ -27,9 +26,10 @@ class CRouter extends Component {
 	render() {
 		return (
 			<Router history={hashHistory}>
-				<Route path={'/'} component={Test} />
+				<Route path={'login'} components={AsyncComponent(() => import('@/pages/Login'))} />
 				<Route path={'/'} component={DashBoard}>
-					<IndexRedirect to="/index" />
+					{/* <IndexRedirect to="/index" /> */}
+					<IndexRoute component={Home} />
 					<Route path={'index'} component={Home} />
 					<Route path={'ui/buttons'} component={Buttons} />
 					<Route path={'ui/icons'} components={IconComp} />
@@ -43,6 +43,9 @@ class CRouter extends Component {
 					<Route path={'blog/list'} components={BlogList} />
 					<Route path={'blog/detail/:id'} components={BlogDetail} />
 					<Route path={'blog/create'} components={BlogCreate} />
+					<Route path={'blog/edit/:id'} components={BlogCreate} />
+
+					<Route path="/*" component={Home} />
 				</Route>
 			</Router>
 		)

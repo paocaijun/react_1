@@ -1,6 +1,7 @@
 import React from 'react'
 import api from '@/utils/api'
 import './blog.scss'
+import utils from '@/utils/misc'
 
 class BlogDetail extends React.Component {
 	constructor(props) {
@@ -31,8 +32,16 @@ class BlogDetail extends React.Component {
 		}
 		return (
 			<div className="blog-bg">
-				<h3>博客详情</h3>
-				<div className="main">{msg}</div>
+				<div className="main">
+					<div>
+						<h3 className="blog-title">{this.state.detailMsg.title}</h3>
+						<div className="title">
+							<div className="author">{this.state.detailMsg.author}</div>
+							<div className="time">{utils.formatFullDate(this.state.detailMsg.createtime)}</div>
+						</div>
+						<p className="content">{this.state.detailMsg.content}</p>
+					</div>
+				</div>
 			</div>
 		)
 	}

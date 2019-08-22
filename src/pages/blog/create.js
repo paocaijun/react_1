@@ -1,10 +1,10 @@
 import React from 'react'
 import api from '@/utils/api'
 import { Form, Input, Button } from 'antd'
+const { TextArea } = Input
 
 import './blog.scss'
 function hasErrors(fieldsError) {
-	console.log('1', Object.keys(fieldsError), fieldsError, Object.keys(fieldsError).some(field => fieldsError[field]))
 	return Object.keys(fieldsError).some(field => fieldsError[field])
 }
 class BlogCreate extends React.Component {
@@ -13,13 +13,21 @@ class BlogCreate extends React.Component {
 	}
 	componentDidMount() {
 		this.props.form.validateFields()
+		console.log('mount', this.props, this.props.route)
 	}
 	handleSubmit = e => {
 		e.preventDefault()
 		this.props.form.validateFields((err, values) => {
 			if (!err) {
 				console.log('Received values of form: ', values)
-				api.createBlog(values)
+				let _promise = api.createBlog
+				// let _promise = api.editBlog
+				_promise(values).then(res => {
+					// alert('新增成功')
+					if (res.code == 0) {
+						this.props.router.push(`/blog/list`)
+					}
+				})
 			}
 		})
 	}
@@ -28,22 +36,50 @@ class BlogCreate extends React.Component {
 		const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = this.props.form
 		const titleError = isFieldTouched('title') && getFieldError('title')
 		const contentError = isFieldTouched('content') && getFieldError('content')
+		// 为什么直接写在FORM上报错
+		const formItemLayout = {
+			labelCol: {
+				xs: { span: 24 },
+				sm: { span: 4 }
+			},
+			wrapperCol: {
+				xs: { span: 24 },
+				sm: { span: 12 }
+			}
+		}
+		const tailFormItemLayout = {
+			wrapperCol: {
+				sm: {
+					span: 16,
+					offset: 4
+				}
+			}
+		}
+		const { layout, ...rest } = formItemLayout
 		return (
 			<div className="blog-bg">
 				<h3>新建博客</h3>
-				<Form onSubmit={this.handleSubmit} className="login-form" layout="inline">
-					<Form.Item label="标题" validateStatus={titleError ? 'error' : ''} help={titleError || ''}>
+				<Form onSubmit={this.handleSubmit} className="login-form">
+					<Form.Item
+						{...formItemLayout}
+						label="标题"
+						validateStatus={titleError ? 'error' : ''}
+						help={titleError || ''}>
 						{getFieldDecorator('title', {
-							rules: [{ required: true, message: 'Please input your 标题!' }]
+							rules: [{ required: true, message: '请输入标题!' }]
 						})(<Input placeholder="标题" />)}
 					</Form.Item>
-					<Form.Item label="内容" validateStatus={contentError ? 'error' : ''} help={contentError || ''}>
+					<Form.Item
+						{...formItemLayout}
+						label="content"
+						validateStatus={contentError ? 'error' : ''}
+						help={contentError || ''}>
 						{getFieldDecorator('content', {
-							rules: [{ required: true, message: 'Please input your 内容!' }]
-						})(<Input placeholder="内容" />)}
+							rules: [{ required: true, message: '请输入内容!' }]
+						})(<TextArea placeholder="内容" type="textArea" />)}
 					</Form.Item>
-					<Form.Item>
-						<Button type="primary" htmlType="submit" disabled={hasErrors(getFieldsError())}>
+					<Form.Item {...tailFormItemLayout}>
+						<Button type="primary" htmlType="submit">
 							登录
 						</Button>
 					</Form.Item>
