@@ -16,7 +16,7 @@
     "react-dom": "^16.7.0",
     "react-router": "3.2.0",
     "webpack": "^3.8.1",
-    "webpack-bundle-analyzer": "^2.8.2",
+    "webpack-bundle-analyzer": "^3.6.0",
     "webpack-dev-server": "^2.7.1"
   },
   "devDependencies": {
